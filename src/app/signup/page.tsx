@@ -1,4 +1,9 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export default function RegisterPage() {
+  const router = useRouter();
   return (
     <div className="mx-auto max-w-6xl px-5">
       <div className="mt-9 flex justify-center">
@@ -47,9 +52,19 @@ export default function RegisterPage() {
         회원가입
       </button>
       <div className="mt-3 flex justify-center gap-2">
-        <p className="cursor-pointer text-sm">ID/PW 찾기</p>
+        <p
+          className="cursor-pointer text-sm"
+          onClick={() => router.push("/find-account")}
+        >
+          ID/PW 찾기
+        </p>
         <p className="text-sm">|</p>
-        <p className="cursor-pointer text-sm">로그인</p>
+        <p
+          className="cursor-pointer text-sm"
+          onClick={() => router.push("/signin")}
+        >
+          로그인
+        </p>
       </div>
     </div>
   );
