@@ -21,9 +21,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div className="mt-8 mb-20 h-56 w-full bg-gray-300"></div>
-
       <div className="mx-auto max-w-6xl px-5">
         <p className="mb-4 font-semibold">최신 개봉작</p>
         <ListItem />
@@ -62,6 +60,10 @@ export default function Home() {
             </div>
           </div>
         </div> */}
+      </div>
+      {/* footer */}
+      <div className="mt-30 flex h-20 w-full items-center bg-gray-300 px-5 text-xs">
+        © 2025 MovieGo. All rights reserved.
       </div>
     </>
   );
