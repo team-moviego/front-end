@@ -1,26 +1,13 @@
 "use client";
 
-import { BsFillTicketPerforatedFill } from "react-icons/bs";
-import { IoMdMenu } from "react-icons/io";
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
+import Header from "./(components)/Header";
 
 export default function Home() {
   return (
     <>
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="mt-9 flex items-center justify-between">
-          <p className="text-base">MovieGo</p>
-          <div className="flex items-center gap-2">
-            <BsFillTicketPerforatedFill size={24} />
-            <IoMdMenu size={24} />
-          </div>
-        </div>
-      </div>
+      <Header />
       <div className="mt-8 mb-20 h-56 w-full bg-gray-300"></div>
       <div className="mx-auto max-w-6xl px-5">
         <p className="mb-4 font-semibold">최신 개봉작</p>
