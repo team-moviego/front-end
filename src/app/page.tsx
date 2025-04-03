@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Header from "./(components)/Header";
+import Footer from "./(components)/Footer";
 
 export default function Home() {
   return (
@@ -48,10 +49,8 @@ export default function Home() {
           </div>
         </div> */}
       </div>
-      {/* footer */}
-      <div className="mt-30 flex h-20 w-full items-center bg-gray-300 px-5 text-xs">
-        © 2025 MovieGo. All rights reserved.
-      </div>
+
+      <Footer />
     </>
   );
 }
