@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/app/(components)/Footer";
 import Header from "@/app/(components)/Header";
 import { useState } from "react";
 
@@ -67,6 +68,8 @@ export default function MovieDetailPage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

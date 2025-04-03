@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "../(components)/Footer";
 import Header from "../(components)/Header";
 
 export default function MoviePage() {
@@ -13,6 +14,8 @@ export default function MoviePage() {
         <ListItem />
         <ListItem />
       </div>
+
+      <Footer />
     </>
   );
 }
