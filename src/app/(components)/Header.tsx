@@ -14,7 +14,10 @@ export default function Header() {
           MovieGo
         </p>
         <div className="flex items-center gap-2">
-          <BsFillTicketPerforatedFill size={24} />
+          <BsFillTicketPerforatedFill
+            size={24}
+            onClick={() => router.push("/ticket")}
+          />
           <IoMdMenu size={24} />
         </div>
       </div>
