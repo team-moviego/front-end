@@ -1,3 +1,4 @@
+import { FaTrash } from "react-icons/fa";
 import Header from "../(components)/Header";
 
 export default function TicketPage() {
@@ -29,6 +30,13 @@ export default function TicketPage() {
               <p>일반 1</p>
               <p>B 11</p>
             </div>
+          </div>
+        </div>
+
+        <div className="flex justify-end">
+          <div className="flex items-center gap-1 rounded-sm border p-2">
+            <FaTrash />
+            <p className="text-sm">예매취소</p>
           </div>
         </div>
       </div>
