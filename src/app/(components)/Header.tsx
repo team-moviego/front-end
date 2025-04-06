@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { BsFillTicketPerforatedFill } from "react-icons/bs";
-import { IoMdMenu } from "react-icons/io";
+import SideBar from "./SideBar";
 
 export default function Header() {
   const router = useRouter();
@@ -16,9 +16,9 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <BsFillTicketPerforatedFill
             size={24}
-            onClick={() => router.push("/ticket")}
+            onClick={() => router.push("/myTicket")}
           />
-          <IoMdMenu size={24} />
+          <SideBar />
         </div>
       </div>
     </div>
