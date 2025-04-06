@@ -35,8 +35,8 @@ export default function TicketPage() {
 
         <div className="flex justify-end">
           <div className="flex items-center gap-1 rounded-sm border p-2">
-            <FaTrash />
-            <p className="text-sm">예매취소</p>
+            <FaTrash size={12} />
+            <p className="text-xs">예매취소</p>
           </div>
         </div>
       </div>
