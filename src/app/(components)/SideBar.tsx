@@ -1,5 +1,6 @@
 import { IoMdMenu } from "react-icons/io";
 import { RiMovie2Fill } from "react-icons/ri";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 import {
   Sheet,
@@ -33,6 +34,10 @@ export default function SideBar() {
               }}
             />
           </SheetTitle>
+          <div className="my-10 flex items-center justify-between">
+            <p>로그인을 해주세요</p>
+            <MdOutlineArrowForwardIos />
+          </div>
           <div>
             <p className="inline-block border-b border-black py-2 text-black">
               MENU
