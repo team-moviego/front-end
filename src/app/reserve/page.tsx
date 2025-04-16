@@ -1,6 +1,11 @@
+"use client";
+
 import Header from "../(components)/Header";
 
 export default function ReservePage() {
+  const handleClick = (value: string) => {
+    console.log(`click ${value}`);
+  };
   return (
     <>
       <Header />
@@ -42,6 +47,74 @@ export default function ReservePage() {
               );
             })}
           </div>
+        </div>
+
+        <p className="mt-15 flex h-8 w-full items-center justify-center bg-gray-300 text-xs">
+          Screen
+        </p>
+
+        <div className="mt-5 flex gap-2">
+          <div className="flex flex-col items-center justify-center gap-2 text-xs">
+            {Array.from({ length: 10 }).map((_, i) => {
+              const char = String.fromCharCode(65 + i);
+              return (
+                <p
+                  className="flex h-5 w-5 items-center justify-center"
+                  key={i}
+                  onClick={() => handleClick(char)}
+                >
+                  {char}
+                </p>
+              );
+            })}
+          </div>
+
+          <section className="flex flex-col gap-2">
+            {Array.from({ length: 10 }).map((_, i) => {
+              return (
+                <div className="flex gap-5" key={i}>
+                  <div className="flex gap-1 text-xs">
+                    {Array.from({ length: 2 }).map((_, i) => {
+                      return (
+                        <p
+                          className="flex h-5 w-5 items-center justify-center border border-black"
+                          key={i}
+                        >
+                          {i + 1}
+                        </p>
+                      );
+                    })}
+                  </div>
+
+                  <div className="flex gap-1 text-xs">
+                    {Array.from({ length: 6 }).map((_, i) => {
+                      return (
+                        <p
+                          className="flex h-5 w-5 items-center justify-center border border-black"
+                          key={i}
+                        >
+                          {i + 3}
+                        </p>
+                      );
+                    })}
+                  </div>
+
+                  <div className="flex gap-1 text-xs">
+                    {Array.from({ length: 2 }).map((_, i) => {
+                      return (
+                        <p
+                          className="flex h-5 w-5 items-center justify-center border border-black"
+                          key={i}
+                        >
+                          {i + 9}
+                        </p>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </section>
         </div>
       </div>
     </>
