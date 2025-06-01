@@ -47,7 +47,7 @@ export default function SignInPage() {
       <div className="mt-3 flex justify-center gap-2">
         <p
           className="cursor-pointer text-sm"
-          onClick={() => router.push("/find-account")}
+          onClick={() => router.push("/forgot")}
         >
           ID/PW 찾기
         </p>
