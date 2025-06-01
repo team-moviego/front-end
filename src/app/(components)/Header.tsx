@@ -16,7 +16,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <BsFillTicketPerforatedFill
             size={24}
-            onClick={() => router.push("/myTicket")}
+            onClick={() => router.push("/my-ticket")}
           />
           <SideBar />
         </div>
