@@ -12,11 +12,16 @@ import {
 import { FaHome } from "react-icons/fa";
 import { LucideTicket } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SideBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setIsLogin(false);
+  }, []);
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -34,8 +39,11 @@ export default function SideBar() {
               }}
             />
           </SheetTitle>
-          <div className="my-10 flex items-center justify-between">
-            <p>로그인을 해주세요</p>
+          <div
+            className="my-10 flex items-center justify-between"
+            onClick={() => router.push("/sign-in")}
+          >
+            {isLogin ? <p>xx님 환영합니다</p> : <p>로그인을 해주세요</p>}
             <MdOutlineArrowForwardIos />
           </div>
           <div>
