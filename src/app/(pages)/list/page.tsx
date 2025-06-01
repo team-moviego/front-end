@@ -1,4 +1,7 @@
+"use client";
+
 import Header from "@/app/(components)/Header";
+import { useRouter } from "next/navigation";
 
 export default function ListPage() {
   const array = [
@@ -30,56 +33,36 @@ export default function ListPage() {
         </div>
 
         <div className="mt-10 space-y-8">
-          <section className="flex justify-between gap-5">
-            <div className="flex gap-5">
-              <div className="h-35 w-25 rounded-md bg-gray-200"></div>
-              <div className="flex flex-col gap-1">
-                <p className="pt-4 text-lg font-medium">타이틀</p>
-                <p className="text-sm">2025.03.26 개봉</p>
-                <p className="text-sm text-gray-500">누적관객 100만명</p>
-              </div>
-            </div>
-
-            <div className="flex items-end">
-              <button className="rounded-xs bg-gray-200 px-3 py-2 text-sm">
-                예매하기
-              </button>
-            </div>
-          </section>
-          <section className="flex justify-between gap-5">
-            <div className="flex gap-5">
-              <div className="h-35 w-25 rounded-md bg-gray-200"></div>
-              <div className="flex flex-col gap-1">
-                <p className="pt-4 font-medium">타이틀</p>
-                <p className="text-sm">2025.03.26 개봉</p>
-                <p className="text-sm text-gray-500">누적관객 100만명</p>
-              </div>
-            </div>
-
-            <div className="flex items-end">
-              <button className="rounded-xs bg-gray-200 px-3 py-2 text-sm">
-                예매하기
-              </button>
-            </div>
-          </section>
-          <section className="flex justify-between gap-5">
-            <div className="flex gap-5">
-              <div className="h-35 w-25 rounded-md bg-gray-200"></div>
-              <div className="flex flex-col gap-1">
-                <p className="pt-4 font-medium">타이틀</p>
-                <p className="text-sm">2025.03.26 개봉</p>
-                <p className="text-sm text-gray-500">누적관객 100만명</p>
-              </div>
-            </div>
-
-            <div className="flex items-end">
-              <button className="rounded-xs bg-gray-200 px-3 py-2 text-sm">
-                예매하기
-              </button>
-            </div>
-          </section>
+          <ListItem />
         </div>
       </div>
     </>
   );
 }
+
+const ListItem = () => {
+  const router = useRouter();
+
+  return Array.from({ length: 10 }).map((_, index) => (
+    <section
+      key={index}
+      className="flex justify-between gap-5"
+      onClick={() => router.push(`/list/${index}`)}
+    >
+      <div className="flex gap-5">
+        <div className="h-35 w-25 rounded-md bg-gray-200"></div>
+        <div className="flex flex-col gap-1">
+          <p className="pt-4 text-lg font-medium">타이틀</p>
+          <p className="text-sm">2025.03.26 개봉</p>
+          <p className="text-sm text-gray-500">누적관객 100만명</p>
+        </div>
+      </div>
+
+      <div className="flex items-end">
+        <button className="rounded-xs bg-gray-200 px-3 py-2 text-sm">
+          예매하기
+        </button>
+      </div>
+    </section>
+  ));
+};
