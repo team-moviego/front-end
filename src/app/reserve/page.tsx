@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "../(components)/Footer";
 import Header from "../(components)/Header";
 
 export default function ReservePage() {
@@ -117,6 +118,8 @@ export default function ReservePage() {
           </section>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }
