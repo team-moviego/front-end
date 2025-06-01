@@ -14,16 +14,16 @@ export default function ForgotPage() {
 
         <div className="mt-8">
           <Tabs defaultValue="account">
-            <TabsList className="h-10 w-full">
+            <TabsList className="h-12 w-full">
               <TabsTrigger value="account">아이디 찾기</TabsTrigger>
               <TabsTrigger value="password">비밀번호 찾기</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
 
-        <div className="mt-10 space-y-4">
-          <label className="text-sm" htmlFor="email">
-            이메일 주소
+        <div className="mt-12 space-y-4">
+          <label className="mb-1 block text-sm" htmlFor="email">
+            이메일
           </label>
           <input
             type="text"
@@ -31,7 +31,7 @@ export default function ForgotPage() {
             placeholder="이메일 주소를 입력해주세요"
             className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
           />
-          <label className="text-sm" htmlFor="email">
+          <label className="mb-1 block text-sm" htmlFor="email">
             이름
           </label>
           <input
