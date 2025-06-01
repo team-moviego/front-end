@@ -10,20 +10,40 @@ export default function SignInPage() {
       <div className="mt-9 flex justify-center">
         <p className="text-base">로그인</p>
       </div>
-      <input
-        type="text"
-        placeholder="아이디를 입력하세요"
-        className="mt-30 w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
-      />
-      <input
-        type="text"
-        placeholder="비밀번호를 입력하세요"
-        className="mt-5 w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
-      />
+
+      <section className="mt-30 space-y-3">
+        <label htmlFor="id" className="mb-1 block text-sm">
+          아이디
+        </label>
+        <input
+          type="text"
+          placeholder="아이디를 입력하세요"
+          className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+        />
+        <label htmlFor="pwd" className="mb-1 block text-sm">
+          비밀번호
+        </label>
+        <input
+          type="text"
+          placeholder="비밀번호를 입력하세요"
+          className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+        />
+      </section>
+
       <p className="mt-5 text-sm">자동로그인</p>
-      <button className="mt-20 w-full rounded-md border border-gray-300 p-3 text-sm">
-        로그인
-      </button>
+
+      <section className="mt-20 space-y-3">
+        <button className="w-full rounded-md border border-gray-300 p-3 text-sm">
+          카카오로 로그인
+        </button>
+        <button
+          className="w-full rounded-md border border-gray-300 p-3 text-sm"
+          onClick={() => router.push("/")}
+        >
+          로그인
+        </button>
+      </section>
+
       <div className="mt-3 flex justify-center gap-2">
         <p
           className="cursor-pointer text-sm"
@@ -39,9 +59,6 @@ export default function SignInPage() {
           회원가입
         </p>
       </div>
-      <button className="mt-3 w-full rounded-md border border-gray-300 p-3 text-sm">
-        카카오로 로그인
-      </button>
     </div>
   );
 }
