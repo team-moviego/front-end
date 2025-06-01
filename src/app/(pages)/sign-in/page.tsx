@@ -34,7 +34,7 @@ export default function SignInPage() {
         <p className="text-sm">|</p>
         <p
           className="cursor-pointer text-sm"
-          onClick={() => router.push("/signup")}
+          onClick={() => router.push("/sign-up")}
         >
           회원가입
         </p>

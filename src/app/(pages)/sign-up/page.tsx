@@ -61,7 +61,7 @@ export default function RegisterPage() {
         <p className="text-sm">|</p>
         <p
           className="cursor-pointer text-sm"
-          onClick={() => router.push("/signin")}
+          onClick={() => router.push("/sign-in")}
         >
           로그인
         </p>

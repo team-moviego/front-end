@@ -1,5 +1,5 @@
 import { FaTrash } from "react-icons/fa";
-import Header from "../(components)/Header";
+import Header from "../../(components)/Header";
 
 export default function TicketPage() {
   return (
