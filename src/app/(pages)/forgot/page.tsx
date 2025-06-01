@@ -1,7 +1,12 @@
+"use client";
+
 import Header from "@/app/(components)/Header";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState } from "react";
 
 export default function ForgotPage() {
+  const [tab, setTab] = useState("id");
+
   return (
     <>
       <Header />
@@ -13,24 +18,29 @@ export default function ForgotPage() {
         </section>
 
         <div className="mt-8">
-          <Tabs defaultValue="account">
+          <Tabs defaultValue={tab} onValueChange={setTab}>
             <TabsList className="h-12 w-full">
-              <TabsTrigger value="account">아이디 찾기</TabsTrigger>
-              <TabsTrigger value="password">비밀번호 찾기</TabsTrigger>
+              <TabsTrigger value="id">아이디 찾기</TabsTrigger>
+              <TabsTrigger value="pwd">비밀번호 찾기</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
 
         <div className="mt-12 space-y-4">
-          <label className="mb-1 block text-sm" htmlFor="email">
-            이메일
-          </label>
-          <input
-            type="text"
-            id="email"
-            placeholder="이메일 주소를 입력해주세요"
-            className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
-          />
+          {tab === "id" && (
+            <>
+              <label className="mb-1 block text-sm" htmlFor="email">
+                이메일
+              </label>
+              <input
+                type="text"
+                id="email"
+                placeholder="이메일 주소를 입력해주세요"
+                className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+              />
+            </>
+          )}
+
           <label className="mb-1 block text-sm" htmlFor="email">
             이름
           </label>
@@ -44,7 +54,7 @@ export default function ForgotPage() {
 
         <div className="mt-40">
           <button className="text-ls w-full rounded-md border border-gray-300 p-3">
-            아이디 찾기
+            {tab === "id" ? "아이디 찾기" : "비밀번호 찾기"}
           </button>
         </div>
       </div>
