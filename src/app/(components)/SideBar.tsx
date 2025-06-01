@@ -58,7 +58,7 @@ export default function SideBar() {
                   size={48}
                   color="black"
                   onClick={() => {
-                    router.push("/movie");
+                    router.push("/list");
                     setIsOpen(false);
                   }}
                 />
