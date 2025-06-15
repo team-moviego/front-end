@@ -17,24 +17,50 @@ export default function TicketCompletePage() {
         </section>
 
         <section className="mt-25">
-          <p className="mb-6 text-xl font-bold">예매정보</p>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="text-gray-500">예매번호</div>
-            <div>1234567890</div>
-            <div className="text-gray-500">예매자</div>
-            <div>홍길동</div>
-            <div className="text-gray-500">예매일</div>
-            <div>2025-01-01</div>
-            <div className="text-gray-500">영화</div>
-            <div>영화제목</div>
-            <div className="text-gray-500">관람일시</div>
-            <div>2025-01-01 12:00</div>
-            <div className="text-gray-500">상영관</div>
-            <div>1관</div>
-            <div className="text-gray-500">좌석</div>
-            <div>A1, A2</div>
+          <p className="mb-3 text-xl font-bold">예매정보</p>
+          <div className="grid grid-cols-2">
+            <div className="border-t-2 border-b border-t-black py-3 text-gray-500">
+              예매번호
+            </div>
+            <div className="border-t-2 border-b border-t-black py-3">
+              1234567890
+            </div>
+            <div className="border-b py-3 text-gray-500">예매자</div>
+            <div className="border-b py-3">홍길동</div>
+            <div className="border-b py-3 text-gray-500">예매일</div>
+            <div className="border-b py-3">2025-01-01</div>
+            <div className="border-b py-3 text-gray-500">영화</div>
+            <div className="border-b py-3">영화제목</div>
+            <div className="border-b py-3 text-gray-500">관람일시</div>
+            <div className="border-b py-3">2025-01-01 12:00</div>
+            <div className="border-b py-3 text-gray-500">상영관</div>
+            <div className="border-b py-3">1관</div>
+            <div className="border-b py-3 text-gray-500">좌석</div>
+            <div className="border-b py-3">A1, A2</div>
           </div>
         </section>
+
+        <section className="mt-25">
+          <p className="mb-3 text-xl font-bold">결제정보</p>
+          <div className="grid grid-cols-2">
+            <div className="border-t-2 border-b border-t-black py-3 text-gray-500">
+              결제수단
+            </div>
+            <div className="border-t-2 border-b border-t-black py-3">
+              현재 상태
+            </div>
+            <div className="border-b py-3 text-gray-500">현재 상태</div>
+            <div className="border-b py-3">예매완료</div>
+            <div className="border-b py-3 text-gray-500">결제일시</div>
+            <div className="border-b py-3">2025-01-01</div>
+            <div className="border-b py-3 text-gray-500">결제금액</div>
+            <div className="border-b py-3">100,000원</div>
+          </div>
+        </section>
+
+        <button className="mt-10 w-full rounded-md border border-gray-300 p-3">
+          홈으로
+        </button>
       </div>
     </>
   );
