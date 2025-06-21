@@ -149,48 +149,42 @@ export default function ReservePage() {
               </DrawerDescription>
             </DrawerHeader>
 
-            <div className="overflow-x-auto px-4">
+            <div className="mt-8 overflow-x-auto px-4">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 p-2 text-left">
-                      구분
-                    </th>
-                    <th className="border border-gray-300 p-2 text-left">
-                      단가
-                    </th>
-                    <th className="border border-gray-300 p-2 text-left">
-                      매수
-                    </th>
-                    <th className="border border-gray-300 p-2 text-left">
-                      합계
-                    </th>
+                  <tr className="border-b-1 border-black">
+                    <th className="p-2 text-left">구분</th>
+                    <th className="p-2 text-center">단가</th>
+                    <th className="p-2 text-center">매수</th>
+                    <th className="p-2 text-center">합계</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border border-gray-300 p-2">일반</td>
-                    <td className="border border-gray-300 p-2">15,000 원</td>
-                    <td className="border border-gray-300 p-2">1매</td>
-                    <td className="border border-gray-300 p-2">15,000 원</td>
+                    <td className="p-2 text-left">일반</td>
+                    <td className="p-2 text-right">15,000 원</td>
+                    <td className="p-2 text-center">1매</td>
+                    <td className="p-2 text-right">15,000 원</td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 p-2">청소년</td>
-                    <td className="border border-gray-300 p-2">12,000 원</td>
-                    <td className="border border-gray-300 p-2">1매</td>
-                    <td className="border border-gray-300 p-2">12,000 원</td>
-                  </tr>
-                  <tr className="bg-gray-100">
-                    <td className="border border-gray-300 p-2">총계</td>
-                    <td className="border border-gray-300 p-2">27,000 원</td>
-                    <td className="border border-gray-300 p-2">2매</td>
-                    <td className="border border-gray-300 p-2">54,000 원</td>
+                    <td className="p-2 text-left">청소년</td>
+                    <td className="p-2 text-right">12,000 원</td>
+                    <td className="p-2 text-center">1매</td>
+                    <td className="p-2 text-right">12,000 원</td>
                   </tr>
                 </tbody>
+                <tfoot>
+                  <tr className="border-t border-gray-300 font-bold">
+                    <td className="p-2 text-left">총계</td>
+                    <td className="p-2 text-right">27,000 원</td>
+                    <td className="p-2 text-center">2매</td>
+                    <td className="p-2 text-right">54,000 원</td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
 
-            <DrawerFooter>
+            <DrawerFooter className="mt-8">
               <div
                 className="w-full cursor-pointer rounded-md border border-gray-300 p-3 text-center"
                 onClick={() =>
