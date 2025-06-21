@@ -9,7 +9,7 @@ export default function Button({
 }) {
   return (
     <button
-      className={`w-full rounded-md border border-gray-300 p-3 ${className}`}
+      className={`w-full cursor-pointer rounded-md border border-gray-300 p-3 ${className}`}
       onClick={onClick}
     >
       {children}
