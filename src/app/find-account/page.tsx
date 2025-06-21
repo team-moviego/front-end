@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Button from "../(components)/Button";
 
 export default function FindIdPage() {
   const [gubun, setGubun] = useState("id");
@@ -51,9 +52,7 @@ export default function FindIdPage() {
         />
       )}
 
-      <button className="mt-25 w-full rounded-md border border-gray-300 p-3">
-        {gubun == "id" ? "아이디 찾기" : "비밀번호 찾기"}
-      </button>
+      <Button>{gubun == "id" ? "아이디 찾기" : "비밀번호 찾기"}</Button>
     </div>
   );
 }
