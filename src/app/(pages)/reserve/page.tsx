@@ -12,8 +12,10 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { useRouter } from "next/navigation";
 
 export default function ReservePage() {
+  const router = useRouter();
   const handleClick = (value: string) => {
     console.log(`click ${value}`);
   };
@@ -136,18 +138,63 @@ export default function ReservePage() {
           </DrawerTrigger>
           <DrawerContent>
             <DrawerHeader>
-              <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+              <DrawerTitle>최종 결제확인</DrawerTitle>
               <DrawerDescription>
-                This action cannot be undone.
+                예매하시려면 아래 버튼을 클릭해주세요.
               </DrawerDescription>
             </DrawerHeader>
+
+            <div className="overflow-x-auto px-4">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 p-2 text-left">
+                      구분
+                    </th>
+                    <th className="border border-gray-300 p-2 text-left">
+                      단가
+                    </th>
+                    <th className="border border-gray-300 p-2 text-left">
+                      매수
+                    </th>
+                    <th className="border border-gray-300 p-2 text-left">
+                      합계
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 p-2">일반</td>
+                    <td className="border border-gray-300 p-2">15,000 원</td>
+                    <td className="border border-gray-300 p-2">1매</td>
+                    <td className="border border-gray-300 p-2">15,000 원</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 p-2">청소년</td>
+                    <td className="border border-gray-300 p-2">12,000 원</td>
+                    <td className="border border-gray-300 p-2">1매</td>
+                    <td className="border border-gray-300 p-2">12,000 원</td>
+                  </tr>
+                  <tr className="bg-gray-100">
+                    <td className="border border-gray-300 p-2">총계</td>
+                    <td className="border border-gray-300 p-2">27,000 원</td>
+                    <td className="border border-gray-300 p-2">2매</td>
+                    <td className="border border-gray-300 p-2">54,000 원</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
             <DrawerFooter>
-              <div className="w-full cursor-pointer rounded-md border border-gray-300 p-3 text-center">
-                Submit
+              <div
+                className="w-full cursor-pointer rounded-md border border-gray-300 p-3 text-center"
+                onClick={() => router.push("/ticket/complete/1")}
+              >
+                54,000 원 결제하기
               </div>
               <DrawerClose>
                 <div className="w-full cursor-pointer rounded-md border border-gray-300 p-3 text-center">
-                  Cancel
+                  취소하기
                 </div>
               </DrawerClose>
             </DrawerFooter>
