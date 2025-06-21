@@ -1,13 +1,15 @@
 export default function Button({
   children,
   onClick,
+  className,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
+  className?: string;
 }) {
   return (
     <button
-      className="mt-25 w-full rounded-md border border-gray-300 p-3"
+      className={`w-full rounded-md border border-gray-300 p-3 ${className}`}
       onClick={onClick}
     >
       {children}

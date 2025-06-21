@@ -2,6 +2,16 @@
 
 import Footer from "../../(components)/Footer";
 import Header from "../../(components)/Header";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 export default function ReservePage() {
   const handleClick = (value: string) => {
@@ -54,7 +64,7 @@ export default function ReservePage() {
           Screen
         </p>
 
-        <div className="mt-5 flex gap-2">
+        <div className="mt-5 mb-25 flex gap-2">
           <div className="flex flex-col items-center justify-center gap-2 text-xs">
             {Array.from({ length: 10 }).map((_, i) => {
               const char = String.fromCharCode(65 + i);
@@ -117,8 +127,35 @@ export default function ReservePage() {
             })}
           </section>
         </div>
+
+        <Drawer>
+          <DrawerTrigger className="w-full">
+            <div className="w-full cursor-pointer rounded-md border border-gray-300 p-3 text-center">
+              예매하기
+            </div>
+          </DrawerTrigger>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+              <DrawerDescription>
+                This action cannot be undone.
+              </DrawerDescription>
+            </DrawerHeader>
+            <DrawerFooter>
+              <div className="w-full cursor-pointer rounded-md border border-gray-300 p-3 text-center">
+                Submit
+              </div>
+              <DrawerClose>
+                <div className="w-full cursor-pointer rounded-md border border-gray-300 p-3 text-center">
+                  Cancel
+                </div>
+              </DrawerClose>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
       </div>
 
+      <div className="mb-20"></div>
       <Footer />
     </>
   );
