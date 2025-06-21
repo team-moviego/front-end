@@ -1,5 +1,7 @@
 "use client";
 
+import Button from "@/app/(components)/Button";
+import Footer from "@/app/(components)/Footer";
 import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
@@ -9,48 +11,66 @@ export default function RegisterPage() {
       <div className="mt-9 flex justify-center">
         <p className="text-base">회원가입</p>
       </div>
-      <div className="mt-30 flex gap-2">
-        <div className="basis-7/10">
-          <input
-            type="text"
-            placeholder="이메일을 입력"
-            className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
-          />
-        </div>
-        <div className="basis-3/10">
-          <button className="w-full rounded-md border border-gray-300 p-3 text-sm">
-            중복체크
-          </button>
-        </div>
-      </div>
-      <div className="mt-5 flex gap-2">
-        <div className="basis-7/10">
-          <input
-            type="text"
-            placeholder="아이디 영문8자 이상"
-            className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
-          />
-        </div>
-        <div className="basis-3/10">
-          <button className="w-full rounded-md border border-gray-300 p-3 text-sm">
-            중복체크
-          </button>
+      {/* 이메일 */}
+      <div className="mt-30 space-y-3">
+        <label htmlFor="email" className="mb-1 block text-sm">
+          이메일
+        </label>
+        <div className="flex items-center gap-2">
+          <div className="basis-7/10">
+            <input
+              type="text"
+              placeholder="이메일을 입력"
+              className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+            />
+          </div>
+          <div className="basis-3/10">
+            <Button>중복체크</Button>
+          </div>
         </div>
       </div>
-      <input
-        type="password"
-        placeholder="비밀번호 영문,숫자,특수기호 중 2가지 이상"
-        className="mt-5 w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
-      />
-      <input
-        type="password"
-        placeholder="비밀번호 확인 영문,숫자,특수기호 중 2가지 이상"
-        className="mt-5 w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
-      />
+      {/* 아이디 */}
+      <div className="mt-5 space-y-3">
+        <label htmlFor="id" className="mb-1 block text-sm">
+          아이디
+        </label>
+        <div className="flex items-center gap-2">
+          <div className="basis-7/10">
+            <input
+              type="text"
+              placeholder="아이디 영문8자 이상"
+              className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+            />
+          </div>
+          <div className="basis-3/10">
+            <Button>중복체크</Button>
+          </div>
+        </div>
+      </div>
+      {/* 비밀번호 */}
+      <div className="mt-5 space-y-3">
+        <label htmlFor="pwd" className="mb-1 block text-sm">
+          비밀번호
+        </label>
+        <input
+          type="password"
+          placeholder="비밀번호 영문,숫자,특수기호 중 2가지 이상"
+          className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+        />
+      </div>
+      {/* 비밀번호 확인 */}
+      <div className="mt-5 space-y-3">
+        <label htmlFor="pwd-check" className="mb-1 block text-sm">
+          비밀번호 확인
+        </label>
+        <input
+          type="password"
+          placeholder="비밀번호 확인 영문,숫자,특수기호 중 2가지 이상"
+          className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+        />
+      </div>
 
-      <button className="mt-20 w-full rounded-md border border-gray-300 p-3 text-sm">
-        회원가입
-      </button>
+      <Button className="mt-20">회원가입</Button>
       <div className="mt-3 flex justify-center gap-2">
         <p
           className="cursor-pointer text-sm"
@@ -66,6 +86,8 @@ export default function RegisterPage() {
           로그인
         </p>
       </div>
+      <div className="mb-20"></div>
+      <Footer />
     </div>
   );
 }
