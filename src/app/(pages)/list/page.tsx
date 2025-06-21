@@ -24,7 +24,7 @@ export default function ListPage() {
             {array.map((genre, index) => (
               <button
                 key={index}
-                className="ring-offset-background focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-10 flex-shrink-0 items-center justify-center rounded-md border px-5 py-2 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="ring-offset-background focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-md border px-5 py-2 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
               >
                 {genre}
               </button>
@@ -46,7 +46,7 @@ const ListItem = () => {
   return Array.from({ length: 10 }).map((_, index) => (
     <section
       key={index}
-      className="flex justify-between gap-5"
+      className="flex cursor-pointer justify-between gap-5"
       onClick={() => router.push(`/list/${index}`)}
     >
       <div className="flex gap-5">

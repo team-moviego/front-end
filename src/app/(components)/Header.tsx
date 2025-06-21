@@ -10,13 +10,17 @@ export default function Header() {
   return (
     <div className="mx-auto max-w-6xl px-5">
       <div className="mt-9 flex items-center justify-between">
-        <p className="text-base" onClick={() => router.push("/")}>
+        <p
+          className="cursor-pointer text-base"
+          onClick={() => router.push("/")}
+        >
           MovieGo
         </p>
         <div className="flex items-center gap-2">
           <BsFillTicketPerforatedFill
             size={24}
             onClick={() => router.push("/my-ticket")}
+            className="cursor-pointer"
           />
           <SideBar />
         </div>

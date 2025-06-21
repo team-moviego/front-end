@@ -26,7 +26,7 @@ export default function SideBar() {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger>
-        <IoMdMenu size={24} />
+        <IoMdMenu size={24} className="cursor-pointer" />
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
@@ -37,10 +37,11 @@ export default function SideBar() {
                 router.push("/");
                 setIsOpen(false);
               }}
+              className="cursor-pointer"
             />
           </SheetTitle>
           <div
-            className="my-10 flex items-center justify-between"
+            className="my-10 flex cursor-pointer items-center justify-between"
             onClick={() => router.push("/sign-in")}
           >
             {isLogin ? <p>xx님 환영합니다</p> : <p>로그인을 해주세요</p>}
@@ -52,7 +53,7 @@ export default function SideBar() {
             </p>
           </div>
           <div className="mt-5 flex items-center justify-evenly">
-            <div className="text-center">
+            <div className="cursor-pointer text-center">
               <div className="rounded-md border-2 border-black p-3">
                 <RiMovie2Fill
                   size={48}
@@ -65,7 +66,7 @@ export default function SideBar() {
               </div>
               <p className="mt-1">영화조회</p>
             </div>
-            <div className="text-center">
+            <div className="cursor-pointer text-center">
               <div className="rounded-md border-2 border-black p-3">
                 <LucideTicket
                   size={48}

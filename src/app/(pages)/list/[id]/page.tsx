@@ -39,13 +39,13 @@ export default function MovieDetailPage() {
 
         <div className="mt-20 flex text-center">
           <p
-            className={`basis-1/2 ${gubun == "detail" ? activeMessage : inactiveMessage}`}
+            className={`basis-1/2 cursor-pointer ${gubun == "detail" ? activeMessage : inactiveMessage}`}
             onClick={() => setGubun("detail")}
           >
             상세정보
           </p>
           <p
-            className={`basis-1/2 ${gubun != "detail" ? activeMessage : inactiveMessage}`}
+            className={`basis-1/2 cursor-pointer ${gubun != "detail" ? activeMessage : inactiveMessage}`}
             onClick={() => setGubun("review")}
           >
             평점 & 후기
