@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/app/(components)/Button";
+import Footer from "@/app/(components)/Footer";
 import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
@@ -62,6 +63,8 @@ export default function SignInPage() {
           회원가입
         </p>
       </div>
+      <div className="mb-20"></div>
+      <Footer />
     </div>
   );
 }
