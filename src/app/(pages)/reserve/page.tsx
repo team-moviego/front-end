@@ -174,7 +174,7 @@ export default function ReservePage() {
                   </tr>
                 </tbody>
                 <tfoot>
-                  <tr className="border-t border-gray-300 font-bold">
+                  <tr className="font-bold">
                     <td className="p-2 text-left">총계</td>
                     <td className="p-2 text-right">27,000 원</td>
                     <td className="p-2 text-center">2매</td>
