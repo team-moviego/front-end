@@ -4,9 +4,14 @@ import Button from "@/app/(components)/Button";
 import Footer from "@/app/(components)/Footer";
 import Header from "@/app/(components)/Header";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function TicketCompletePage() {
   const router = useRouter();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Header />
