@@ -188,7 +188,9 @@ export default function ReservePage() {
             <DrawerFooter>
               <div
                 className="w-full cursor-pointer rounded-md border border-gray-300 p-3 text-center"
-                onClick={() => router.push("/ticket/complete/1")}
+                onClick={() =>
+                  router.push("/ticket/complete/1", { scroll: true })
+                }
               >
                 54,000 원 결제하기
               </div>
