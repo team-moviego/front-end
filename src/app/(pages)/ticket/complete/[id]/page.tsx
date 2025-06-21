@@ -1,6 +1,12 @@
+"use client";
+
+import Button from "@/app/(components)/Button";
+import Footer from "@/app/(components)/Footer";
 import Header from "@/app/(components)/Header";
+import { useRouter } from "next/navigation";
 
 export default function TicketCompletePage() {
+  const router = useRouter();
   return (
     <>
       <Header />
@@ -58,10 +64,12 @@ export default function TicketCompletePage() {
           </div>
         </section>
 
-        <button className="mt-10 w-full rounded-md border border-gray-300 p-3">
+        <Button className="mt-10" onClick={() => router.push("/")}>
           홈으로
-        </button>
+        </Button>
       </div>
+      <div className="mb-20"></div>
+      <Footer />
     </>
   );
 }
