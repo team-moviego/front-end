@@ -12,6 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function ReservePage() {
@@ -19,6 +20,10 @@ export default function ReservePage() {
   const handleClick = (value: string) => {
     console.log(`click ${value}`);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Header />
