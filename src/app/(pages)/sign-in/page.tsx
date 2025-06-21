@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/app/(components)/Button";
 import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
@@ -30,18 +31,20 @@ export default function SignInPage() {
         />
       </section>
 
-      <p className="mt-5 text-sm">자동로그인</p>
+      <div className="mt-5 flex items-center gap-2">
+        <input
+          type="checkbox"
+          id="auto-login"
+          className="h-4 w-4 rounded border-gray-300"
+        />
+        <label htmlFor="auto-login" className="cursor-pointer text-sm">
+          자동 로그인
+        </label>
+      </div>
 
       <section className="mt-20 space-y-3">
-        <button className="w-full rounded-md border border-gray-300 p-3 text-sm">
-          카카오로 로그인
-        </button>
-        <button
-          className="w-full rounded-md border border-gray-300 p-3 text-sm"
-          onClick={() => router.push("/")}
-        >
-          로그인
-        </button>
+        <Button>카카오로 로그인</Button>
+        <Button onClick={() => router.push("/")}>로그인</Button>
       </section>
 
       <div className="mt-3 flex justify-center gap-2">
