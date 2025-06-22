@@ -195,7 +195,7 @@ export default function ReservePage() {
               </div>
               <DrawerClose>
                 <div className="w-full cursor-pointer rounded-md border border-gray-300 p-3 text-center">
-                  취소하기
+                  돌아가기
                 </div>
               </DrawerClose>
             </DrawerFooter>
