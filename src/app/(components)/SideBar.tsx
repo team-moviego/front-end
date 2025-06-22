@@ -1,5 +1,5 @@
 import { IoMdMenu } from "react-icons/io";
-import { RiMovie2Fill } from "react-icons/ri";
+import { RiHistoryFill, RiMovie2Fill, RiUserFill } from "react-icons/ri";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 import {
@@ -44,7 +44,7 @@ export default function SideBar() {
             className="my-10 flex cursor-pointer items-center justify-between"
             onClick={() => router.push("/sign-in")}
           >
-            {isLogin ? <p>xx님 환영합니다</p> : <p>로그인을 해주세요</p>}
+            {isLogin ? <p>xx님 환영합니다</p> : <p>로그인 후 이용해주세요</p>}
             <MdOutlineArrowForwardIos />
           </div>
           <div>
@@ -52,34 +52,49 @@ export default function SideBar() {
               MENU
             </p>
           </div>
-          <div className="mt-5 flex items-center justify-evenly">
-            <div className="cursor-pointer text-center">
-              <div className="rounded-md border-2 border-black p-3">
-                <RiMovie2Fill
-                  size={48}
-                  color="black"
-                  onClick={() => {
-                    router.push("/list");
-                    setIsOpen(false);
-                  }}
-                />
-              </div>
-              <p className="mt-1">영화조회</p>
+          {/* 메뉴리스트 */}
+          <section className="mt-5 flex flex-col gap-5">
+            <div
+              className="flex cursor-pointer items-center gap-5"
+              onClick={() => {
+                router.push("/my-info");
+                setIsOpen(false);
+              }}
+            >
+              <RiUserFill size={24} color="black" />
+              <p>내 정보</p>
             </div>
-            <div className="cursor-pointer text-center">
-              <div className="rounded-md border-2 border-black p-3">
-                <LucideTicket
-                  size={48}
-                  color="black"
-                  onClick={() => {
-                    router.push("/reserve");
-                    setIsOpen(false);
-                  }}
-                />
-              </div>
-              <p className="mt-1">바로예매</p>
+            <div
+              className="flex cursor-pointer items-center gap-5"
+              onClick={() => {
+                router.push("/my-ticket");
+                setIsOpen(false);
+              }}
+            >
+              <RiHistoryFill size={24} color="black" />
+              <p>예약내역</p>
             </div>
-          </div>
+            <div
+              className="flex cursor-pointer items-center gap-5"
+              onClick={() => {
+                router.push("/list");
+                setIsOpen(false);
+              }}
+            >
+              <RiMovie2Fill size={24} color="black" />
+              <p>영화조회</p>
+            </div>
+            <div
+              className="flex cursor-pointer items-center gap-5"
+              onClick={() => {
+                router.push("/reserve");
+                setIsOpen(false);
+              }}
+            >
+              <LucideTicket size={24} color="black" />
+              <p>바로예매</p>
+            </div>
+          </section>
         </SheetHeader>
       </SheetContent>
     </Sheet>
