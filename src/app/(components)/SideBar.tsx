@@ -1,5 +1,10 @@
 import { IoMdMenu } from "react-icons/io";
-import { RiHistoryFill, RiMovie2Fill, RiUserFill } from "react-icons/ri";
+import {
+  RiHistoryFill,
+  RiLockFill,
+  RiMailFill,
+  RiMovie2Fill,
+} from "react-icons/ri";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 import {
@@ -57,16 +62,6 @@ export default function SideBar() {
             <div
               className="flex cursor-pointer items-center gap-5"
               onClick={() => {
-                router.push("/my-info");
-                setIsOpen(false);
-              }}
-            >
-              <RiUserFill size={24} color="black" />
-              <p>내 정보</p>
-            </div>
-            <div
-              className="flex cursor-pointer items-center gap-5"
-              onClick={() => {
                 router.push("/my-ticket");
                 setIsOpen(false);
               }}
@@ -93,6 +88,26 @@ export default function SideBar() {
             >
               <LucideTicket size={24} color="black" />
               <p>바로예매</p>
+            </div>
+            <div
+              className="flex cursor-pointer items-center gap-5"
+              onClick={() => {
+                router.push("/my-info");
+                setIsOpen(false);
+              }}
+            >
+              <RiMailFill size={24} color="black" />
+              <p>이메일 변경</p>
+            </div>
+            <div
+              className="flex cursor-pointer items-center gap-5"
+              onClick={() => {
+                router.push("/my-info");
+                setIsOpen(false);
+              }}
+            >
+              <RiLockFill size={24} color="black" />
+              <p>비밀번호 변경</p>
             </div>
           </section>
         </SheetHeader>
