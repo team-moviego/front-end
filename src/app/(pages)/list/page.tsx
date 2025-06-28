@@ -43,26 +43,43 @@ export default function ListPage() {
 const ListItem = () => {
   const router = useRouter();
 
-  return Array.from({ length: 10 }).map((_, index) => (
-    <section
-      key={index}
-      className="flex cursor-pointer justify-between gap-5"
-      onClick={() => router.push(`/list/${index}`)}
-    >
-      <div className="flex gap-5">
-        <div className="h-35 w-25 rounded-md bg-gray-200"></div>
-        <div className="flex flex-col gap-1">
-          <p className="pt-4 text-lg font-medium">타이틀</p>
-          <p className="text-sm">2025.03.26 개봉</p>
-          <p className="text-sm text-gray-500">누적관객 100만명</p>
+  return (
+    <section className="flex flex-col gap-20">
+      {Array.from({ length: 10 }).map((_, index) => (
+        <div key={index} className="flex-col gap-2">
+          <div className="h-50 w-full rounded-md bg-gray-200"></div>
+          <div className="flex flex-col gap-1">
+            <p className="pt-4 pl-2 text-lg font-medium">타이틀</p>
+            <div className="flex gap-3 pl-2">
+              <span className="text-sm">2025.03.26 개봉</span>
+              <span className="text-sm">•</span>
+              <span className="text-sm text-gray-500">누적관객 100만명</span>
+            </div>
+            <div className="w-full p-5">
+              <div className="line-clamp-3 text-sm leading-6">
+                국가는 과학기술의 혁신과 정보 및 인력의 개발을 통하여 국민경제의
+                발전에 노력하여야 한다. 군인은 현역을 면한 후가 아니면
+                국무총리로 임명될 수 없다. 국군의 조직과 편성은 법률로 정한다.
+                대통령은 전시·사변 또는 이에 준하는 국가비상사태에 있어서
+                병력으로써 군사상의 필요에 응하거나 공공의 안녕질서를 유지할
+                필요가 있을 때에는 법률이 정하는 바에 의하여 계엄을 선포할 수
+                있다.
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button
+                className="w-full rounded-xs border border-gray-300 px-3 py-2 text-sm hover:bg-gray-300"
+                onClick={() => router.push(`/list/${index}`)}
+              >
+                상세보기
+              </button>
+              <button className="w-full rounded-xs border border-gray-200 bg-gray-200 px-3 py-2 text-sm hover:bg-gray-300">
+                예매하기
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="flex items-end">
-        <button className="rounded-xs bg-gray-200 px-3 py-2 text-sm">
-          예매하기
-        </button>
-      </div>
+      ))}
     </section>
-  ));
+  );
 };
