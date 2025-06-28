@@ -68,12 +68,15 @@ const ListItem = () => {
             </div>
             <div className="flex gap-2">
               <button
-                className="w-full rounded-xs border border-gray-300 px-3 py-2 text-sm hover:bg-gray-300"
+                className="w-full cursor-pointer rounded-xs border border-gray-300 px-3 py-2 text-sm hover:bg-gray-300"
                 onClick={() => router.push(`/list/${index}`)}
               >
                 상세보기
               </button>
-              <button className="w-full rounded-xs border border-gray-200 bg-gray-200 px-3 py-2 text-sm hover:bg-gray-300">
+              <button
+                className="w-full cursor-pointer rounded-xs border border-gray-200 bg-gray-200 px-3 py-2 text-sm hover:bg-gray-300"
+                onClick={() => router.push(`/reserve/${index}`)}
+              >
                 예매하기
               </button>
             </div>
