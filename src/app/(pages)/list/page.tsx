@@ -30,6 +30,29 @@ export default function ListPage() {
               </button>
             ))}
           </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              placeholder="검색어를 입력해주세요"
+              className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+            />
+            <button className="flex-shrink-0 rounded-md border border-gray-200 bg-gray-200 p-3.5 text-sm hover:bg-gray-300">
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div className="mt-10 space-y-8">
