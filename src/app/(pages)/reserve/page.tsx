@@ -52,6 +52,7 @@ export default function ReservePage() {
   const [adultCount, setAdultCount] = useState(1);
   const [youthCount, setYouthCount] = useState(0);
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
+  const [selectedTheater, setSelectedTheater] = useState<string>("");
 
   const steps = [
     {
@@ -158,6 +159,32 @@ export default function ReservePage() {
               </Button>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* 영화관 선택 */}
+      <div className="bg-card rounded-lg border p-6">
+        <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+          <MapPin className="h-5 w-5" />
+          영화관 선택
+        </h3>
+        <div className="flex gap-4">
+          {["1관", "2관"].map((theater) => (
+            <label
+              key={theater}
+              className={`flex cursor-pointer items-center gap-2 rounded border px-4 py-2 transition-colors ${selectedTheater === theater ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}
+            >
+              <input
+                type="radio"
+                name="theater"
+                value={theater}
+                checked={selectedTheater === theater}
+                onChange={() => setSelectedTheater(theater)}
+                className="accent-primary"
+              />
+              <span className="font-medium">{theater}</span>
+            </label>
+          ))}
         </div>
       </div>
 
@@ -300,6 +327,10 @@ export default function ReservePage() {
             </span>
           </div>
           <div className="flex justify-between">
+            <span>영화관</span>
+            <span className="font-medium">{selectedTheater}</span>
+          </div>
+          <div className="flex justify-between">
             <span>날짜/시간</span>
             <span className="font-medium">
               {selectedDate} {selectedTime}
@@ -339,7 +370,9 @@ export default function ReservePage() {
       case "movie":
         return selectedMovie !== null;
       case "datetime":
-        return selectedDate && selectedTime && totalTickets > 0;
+        return (
+          selectedDate && selectedTime && totalTickets > 0 && selectedTheater
+        );
       case "seats":
         return selectedSeats.length === totalTickets;
       case "payment":
