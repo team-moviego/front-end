@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, Users, MapPin, CreditCard } from "lucide-react";
 import Header from "@/app/(components)/Header";
+import { useRouter } from "next/navigation";
 
 // 가상의 영화 데이터
 const movies = [
@@ -53,6 +54,8 @@ export default function ReservePage() {
   const [youthCount, setYouthCount] = useState(0);
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
   const [selectedTheater, setSelectedTheater] = useState<string>("");
+
+  const router = useRouter();
 
   const steps = [
     {
@@ -358,7 +361,7 @@ export default function ReservePage() {
 
       <Button
         className="h-12 w-full text-lg"
-        onClick={() => alert("결제가 완료되었습니다! 🎉")}
+        onClick={() => router.push("/ticket/complete/1")}
       >
         결제하기
       </Button>
