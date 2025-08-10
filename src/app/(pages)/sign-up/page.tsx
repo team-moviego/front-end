@@ -3,9 +3,37 @@
 import Button from "@/app/(components)/Button";
 import Footer from "@/app/(components)/Footer";
 import { useRouter } from "next/navigation";
+import { API_ENDPOINT } from "@/config/api";
+import { useState } from "react";
+import axios from "axios";
 
 export default function RegisterPage() {
   const router = useRouter();
+  const [userEmail, setUserEmail] = useState("");
+  const [userId, setUserId] = useState("");
+  const [userPwd, setUserPwd] = useState("");
+  const [userPwdCheck, setUserPwdCheck] = useState("");
+
+  const handleSignup = async () => {
+    console.log(userEmail, userId, userPwd, userPwdCheck);
+    const response = await axios.post(API_ENDPOINT.user.signup, {
+      userEmail: userEmail,
+      userId: userId,
+      userPwd: userPwd,
+    });
+    console.log(response);
+  };
+
+  const handleCheckId = async () => {
+    const response = await axios.get(API_ENDPOINT.user.checkId(userId));
+    console.log(response);
+  };
+
+  const handleCheckEmail = async () => {
+    const response = await axios.get(API_ENDPOINT.user.checkEmail(userEmail));
+    console.log(response);
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-5">
       <div className="mt-9 flex justify-center">
@@ -19,13 +47,15 @@ export default function RegisterPage() {
         <div className="flex items-center gap-2">
           <div className="basis-7/10">
             <input
+              value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
               type="text"
               placeholder="이메일을 입력"
               className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
             />
           </div>
           <div className="basis-3/10">
-            <Button>중복체크</Button>
+            <Button onClick={handleCheckEmail}>중복체크</Button>
           </div>
         </div>
       </div>
@@ -37,13 +67,15 @@ export default function RegisterPage() {
         <div className="flex items-center gap-2">
           <div className="basis-7/10">
             <input
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
               type="text"
               placeholder="아이디 영문8자 이상"
               className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
             />
           </div>
           <div className="basis-3/10">
-            <Button>중복체크</Button>
+            <Button onClick={handleCheckId}>중복체크</Button>
           </div>
         </div>
       </div>
@@ -53,6 +85,8 @@ export default function RegisterPage() {
           비밀번호
         </label>
         <input
+          value={userPwd}
+          onChange={(e) => setUserPwd(e.target.value)}
           type="password"
           placeholder="비밀번호 영문,숫자,특수기호 중 2가지 이상"
           className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
@@ -64,13 +98,17 @@ export default function RegisterPage() {
           비밀번호 확인
         </label>
         <input
+          value={userPwdCheck}
+          onChange={(e) => setUserPwdCheck(e.target.value)}
           type="password"
           placeholder="비밀번호 확인 영문,숫자,특수기호 중 2가지 이상"
           className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
         />
       </div>
 
-      <Button className="mt-20">회원가입</Button>
+      <Button className="mt-20" onClick={handleSignup}>
+        회원가입
+      </Button>
       <div className="mt-3 flex justify-center gap-2">
         <p
           className="cursor-pointer text-sm"
