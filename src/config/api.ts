@@ -9,5 +9,7 @@ export const API_ENDPOINT = {
     checkId: (userId: string) => `${API_URL}/members/member/id/${userId}`,
     checkEmail: (userEmail: string) =>
       `${API_URL}/members/member/email/${userEmail}`,
+    sendEmail: `${API_URL}/members/member/auth`,
+    sendEmailChk: `${API_URL}/members/member/auth-check`,
   },
 };

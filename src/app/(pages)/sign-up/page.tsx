@@ -5,7 +5,7 @@ import Footer from "@/app/(components)/Footer";
 import { useRouter } from "next/navigation";
 import { API_ENDPOINT } from "@/config/api";
 import { useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -13,25 +13,62 @@ export default function RegisterPage() {
   const [userId, setUserId] = useState("");
   const [userPwd, setUserPwd] = useState("");
   const [userPwdCheck, setUserPwdCheck] = useState("");
+  const [authNum, setAuthNum] = useState("");
 
   const handleSignup = async () => {
     console.log(userEmail, userId, userPwd, userPwdCheck);
     const response = await axios.post(API_ENDPOINT.user.signup, {
       userEmail: userEmail,
       userId: userId,
-      userPwd: userPwd,
+      userPw: userPwd,
+      confirmPw: userPwdCheck,
     });
     console.log(response);
   };
 
-  const handleCheckId = async () => {
-    const response = await axios.get(API_ENDPOINT.user.checkId(userId));
-    console.log(response);
+  const handleCheckEmail = async () => {
+    try {
+      const response = await axios.get(API_ENDPOINT.user.checkEmail(userEmail));
+      console.log("response", response.request.responseURL);
+    } catch (error) {
+      console.log("error", error);
+      const message =
+        error instanceof AxiosError
+          ? error.response?.data?.message
+          : "알 수 없는 오류가 발생했습니다.";
+
+      alert(`${message}`);
+    }
   };
 
-  const handleCheckEmail = async () => {
-    const response = await axios.get(API_ENDPOINT.user.checkEmail(userEmail));
-    console.log(response);
+  const handleCheckId = async () => {
+    try {
+      const response = await axios.get(API_ENDPOINT.user.checkId(userId));
+      console.log("response", response);
+    } catch (error) {
+      console.log("error", error);
+      const message =
+        error instanceof AxiosError
+          ? error.response?.data?.message
+          : "알 수 없는 오류가 발생했습니다.";
+
+      alert(`${message}`);
+    }
+  };
+
+  const handleSendEmail = async () => {
+    const response = await axios.post(API_ENDPOINT.user.sendEmail, {
+      userEmail: userEmail,
+    });
+    console.log("response", response);
+  };
+
+  const handleSendEmailChk = async () => {
+    const response = await axios.post(API_ENDPOINT.user.sendEmailChk, {
+      userEmail: userEmail,
+      authNum: authNum,
+    });
+    console.log("response", response);
   };
 
   return (
@@ -45,7 +82,7 @@ export default function RegisterPage() {
           이메일
         </label>
         <div className="flex items-center gap-2">
-          <div className="basis-7/10">
+          <div className="basis-6/10">
             <input
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
@@ -54,11 +91,35 @@ export default function RegisterPage() {
               className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
             />
           </div>
-          <div className="basis-3/10">
+          <div className="basis-2/10">
             <Button onClick={handleCheckEmail}>중복체크</Button>
+          </div>
+          <div className="basis-2/10">
+            <Button onClick={handleSendEmail}>인증번호 발송</Button>
           </div>
         </div>
       </div>
+
+      <div className="mt-5 space-y-3">
+        <label htmlFor="authNum" className="mb-1 block text-sm">
+          인증번호
+        </label>
+        <div className="flex items-center gap-2">
+          <div className="basis-6/10">
+            <input
+              value={authNum}
+              onChange={(e) => setAuthNum(e.target.value)}
+              type="text"
+              placeholder="인증번호 입력"
+              className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+            />
+          </div>
+        </div>
+        <div className="basis-2/10">
+          <Button onClick={handleSendEmailChk}>인증번호 확인</Button>
+        </div>
+      </div>
+
       {/* 아이디 */}
       <div className="mt-5 space-y-3">
         <label htmlFor="id" className="mb-1 block text-sm">
