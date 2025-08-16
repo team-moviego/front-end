@@ -2,10 +2,30 @@
 
 import Button from "@/app/(components)/Button";
 import Footer from "@/app/(components)/Footer";
+import { API_ENDPOINT } from "@/config/api";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SignInPage() {
   const router = useRouter();
+
+  const [userId, setUserId] = useState("");
+  const [userPwd, setUserPwd] = useState("");
+
+  const handleSignin = async () => {
+    try {
+      const response = await axios.post(API_ENDPOINT.user.signin, {
+        userId: userId,
+        userPw: userPwd,
+      });
+      console.log("response", response);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data);
+      }
+    }
+  };
 
   return (
     <div className="mx-auto max-w-6xl px-5">
@@ -18,6 +38,8 @@ export default function SignInPage() {
           아이디
         </label>
         <input
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
           type="text"
           placeholder="아이디를 입력하세요"
           className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
@@ -26,7 +48,9 @@ export default function SignInPage() {
           비밀번호
         </label>
         <input
-          type="text"
+          value={userPwd}
+          onChange={(e) => setUserPwd(e.target.value)}
+          type="password"
           placeholder="비밀번호를 입력하세요"
           className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
         />
@@ -45,7 +69,7 @@ export default function SignInPage() {
 
       <section className="mt-20 space-y-3">
         <Button>카카오로 로그인</Button>
-        <Button onClick={() => router.push("/")}>로그인</Button>
+        <Button onClick={handleSignin}>로그인</Button>
       </section>
 
       <div className="mt-3 flex justify-center gap-2">
