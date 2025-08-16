@@ -14,61 +14,98 @@ export default function RegisterPage() {
   const [userPwd, setUserPwd] = useState("");
   const [userPwdCheck, setUserPwdCheck] = useState("");
   const [authNum, setAuthNum] = useState("");
+  const [isEmailChecked, setIsEmailChecked] = useState(false);
+  const [isSendEmail, setIsSendEmail] = useState(false);
 
   const handleSignup = async () => {
     console.log(userEmail, userId, userPwd, userPwdCheck);
-    const response = await axios.post(API_ENDPOINT.user.signup, {
-      userEmail: userEmail,
-      userId: userId,
-      userPw: userPwd,
-      confirmPw: userPwdCheck,
-    });
-    console.log(response);
+    try {
+      await axios.post(API_ENDPOINT.user.signup, {
+        userEmail: userEmail,
+        userId: userId,
+        userPw: userPwd,
+        confirmPw: userPwdCheck,
+      });
+      alert("회원가입이 완료되었습니다.");
+      router.push("/sign-in");
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data);
+      } else {
+        alert("알 수 없는 오류가 발생했습니다.");
+      }
+    }
   };
 
   const handleCheckEmail = async () => {
     try {
-      const response = await axios.get(API_ENDPOINT.user.checkEmail(userEmail));
-      console.log("response", response.request.responseURL);
-    } catch (error) {
-      console.log("error", error);
-      const message =
-        error instanceof AxiosError
-          ? error.response?.data?.message
-          : "알 수 없는 오류가 발생했습니다.";
-
-      alert(`${message}`);
+      await axios.get(API_ENDPOINT.user.checkEmail(userEmail));
+      setIsEmailChecked(true);
+      alert("사용 가능한 이메일입니다.");
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data);
+      } else {
+        alert("알 수 없는 오류가 발생했습니다.");
+      }
     }
   };
 
   const handleCheckId = async () => {
     try {
-      const response = await axios.get(API_ENDPOINT.user.checkId(userId));
-      console.log("response", response);
+      if (!userId) {
+        alert("아이디를 입력해주세요.");
+        return;
+      }
+      await axios.get(API_ENDPOINT.user.checkId(userId));
+      alert("사용 가능한 아이디입니다.");
     } catch (error) {
-      console.log("error", error);
-      const message =
-        error instanceof AxiosError
-          ? error.response?.data?.message
-          : "알 수 없는 오류가 발생했습니다.";
-
-      alert(`${message}`);
+      if (error instanceof AxiosError) {
+        alert(error.response?.data);
+      } else {
+        alert("알 수 없는 오류가 발생했습니다.");
+      }
     }
   };
 
   const handleSendEmail = async () => {
-    const response = await axios.post(API_ENDPOINT.user.sendEmail, {
-      userEmail: userEmail,
-    });
-    console.log("response", response);
+    try {
+      if (!isEmailChecked) {
+        alert("이메일 중복체크를 해주세요.");
+        return;
+      }
+      setIsSendEmail(true);
+      alert("인증번호가 발송되었습니다.");
+      await axios.post(API_ENDPOINT.user.sendEmail, {
+        userEmail: userEmail,
+      });
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data);
+      } else {
+        alert("알 수 없는 오류가 발생했습니다.");
+      }
+    }
   };
 
   const handleSendEmailChk = async () => {
-    const response = await axios.post(API_ENDPOINT.user.sendEmailChk, {
-      userEmail: userEmail,
-      authNum: authNum,
-    });
-    console.log("response", response);
+    try {
+      if (!isSendEmail) {
+        alert("인증번호 발송을 해주세요.");
+        return;
+      }
+      const response = await axios.post(API_ENDPOINT.user.sendEmailChk, {
+        userEmail: userEmail,
+        authNum: authNum,
+      });
+      alert(response.data);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        alert(error.response?.data);
+      } else {
+        alert("알 수 없는 오류가 발생했습니다.");
+      }
+    }
   };
 
   return (
@@ -82,7 +119,7 @@ export default function RegisterPage() {
           이메일
         </label>
         <div className="flex items-center gap-2">
-          <div className="basis-6/10">
+          <div className="basis-7/10">
             <input
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
@@ -91,42 +128,41 @@ export default function RegisterPage() {
               className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
             />
           </div>
-          <div className="basis-2/10">
+          <div className="flex basis-3/10 gap-2">
             <Button onClick={handleCheckEmail}>중복체크</Button>
-          </div>
-          <div className="basis-2/10">
             <Button onClick={handleSendEmail}>인증번호 발송</Button>
           </div>
         </div>
       </div>
-
-      <div className="mt-5 space-y-3">
-        <label htmlFor="authNum" className="mb-1 block text-sm">
-          인증번호
-        </label>
-        <div className="flex items-center gap-2">
-          <div className="basis-6/10">
-            <input
-              value={authNum}
-              onChange={(e) => setAuthNum(e.target.value)}
-              type="text"
-              placeholder="인증번호 입력"
-              className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
-            />
+      {/* 인증번호 */}
+      {isSendEmail && (
+        <div className="mt-5 space-y-3">
+          <label htmlFor="authNum" className="mb-1 block text-sm">
+            인증번호
+          </label>
+          <div className="flex items-center gap-2">
+            <div className="basis-8/10">
+              <input
+                value={authNum}
+                onChange={(e) => setAuthNum(e.target.value)}
+                type="text"
+                placeholder="인증번호 입력"
+                className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
+              />
+            </div>
+            <div className="basis-2/10">
+              <Button onClick={handleSendEmailChk}>인증번호 확인</Button>
+            </div>
           </div>
         </div>
-        <div className="basis-2/10">
-          <Button onClick={handleSendEmailChk}>인증번호 확인</Button>
-        </div>
-      </div>
-
+      )}
       {/* 아이디 */}
       <div className="mt-5 space-y-3">
         <label htmlFor="id" className="mb-1 block text-sm">
           아이디
         </label>
         <div className="flex items-center gap-2">
-          <div className="basis-7/10">
+          <div className="basis-8/10">
             <input
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
@@ -135,7 +171,7 @@ export default function RegisterPage() {
               className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
             />
           </div>
-          <div className="basis-3/10">
+          <div className="basis-2/10">
             <Button onClick={handleCheckId}>중복체크</Button>
           </div>
         </div>
@@ -166,7 +202,6 @@ export default function RegisterPage() {
           className="w-full rounded-md border border-gray-300 p-3 text-sm focus:ring-1 focus:ring-gray-500 focus:outline-none"
         />
       </div>
-
       <Button className="mt-20" onClick={handleSignup}>
         회원가입
       </Button>
